@@ -1,0 +1,15 @@
+C:\Users\ivato\Projects\Mentorship\Workshop-Git-V1\Workshop\AnimalShelter\bin\Debug\net9.0\AnimalShelter.exe
+C:\Users\ivato\Projects\Mentorship\Workshop-Git-V1\Workshop\AnimalShelter\bin\Debug\net9.0\AnimalShelter.deps.json
+C:\Users\ivato\Projects\Mentorship\Workshop-Git-V1\Workshop\AnimalShelter\bin\Debug\net9.0\AnimalShelter.runtimeconfig.json
+C:\Users\ivato\Projects\Mentorship\Workshop-Git-V1\Workshop\AnimalShelter\bin\Debug\net9.0\AnimalShelter.dll
+C:\Users\ivato\Projects\Mentorship\Workshop-Git-V1\Workshop\AnimalShelter\bin\Debug\net9.0\AnimalShelter.pdb
+C:\Users\ivato\Projects\Mentorship\Workshop-Git-V1\Workshop\AnimalShelter\obj\Debug\net9.0\AnimalShelter.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ivato\Projects\Mentorship\Workshop-Git-V1\Workshop\AnimalShelter\obj\Debug\net9.0\AnimalShelter.AssemblyInfoInputs.cache
+C:\Users\ivato\Projects\Mentorship\Workshop-Git-V1\Workshop\AnimalShelter\obj\Debug\net9.0\AnimalShelter.AssemblyInfo.cs
+C:\Users\ivato\Projects\Mentorship\Workshop-Git-V1\Workshop\AnimalShelter\obj\Debug\net9.0\AnimalShelter.csproj.CoreCompileInputs.cache
+C:\Users\ivato\Projects\Mentorship\Workshop-Git-V1\Workshop\AnimalShelter\obj\Debug\net9.0\AnimalShelter.sourcelink.json
+C:\Users\ivato\Projects\Mentorship\Workshop-Git-V1\Workshop\AnimalShelter\obj\Debug\net9.0\AnimalShelter.dll
+C:\Users\ivato\Projects\Mentorship\Workshop-Git-V1\Workshop\AnimalShelter\obj\Debug\net9.0\refint\AnimalShelter.dll
+C:\Users\ivato\Projects\Mentorship\Workshop-Git-V1\Workshop\AnimalShelter\obj\Debug\net9.0\AnimalShelter.pdb
+C:\Users\ivato\Projects\Mentorship\Workshop-Git-V1\Workshop\AnimalShelter\obj\Debug\net9.0\AnimalShelter.genruntimeconfig.cache
+C:\Users\ivato\Projects\Mentorship\Workshop-Git-V1\Workshop\AnimalShelter\obj\Debug\net9.0\ref\AnimalShelter.dll

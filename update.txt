@@ -1,0 +1,102 @@
+=== ANIMAL SHELTER PROJECT - REFACTORING SUGGESTIONS ===
+
+INSTRUCTIONS:
+Please write your name and provide suggestions for refactoring this AnimalShelter project.
+Focus on improving code quality, design patterns, and addressing potential issues.
+
+NAME: ________________________
+
+REFACTORING SUGGESTIONS:
+
+1. CODE STRUCTURE & ORGANIZATION:
+   - 
+   - 
+   - 
+
+2. INHERITANCE & POLYMORPHISM IMPROVEMENTS:
+   - 
+   - 
+   - 
+
+3. ACCESS MODIFIERS & ENCAPSULATION:
+   - 
+   - 
+   - 
+
+4. DESIGN PATTERNS TO IMPLEMENT:
+   - 
+   - 
+   - 
+
+5. TESTING IMPROVEMENTS:
+   - 
+   - 
+   - 
+
+6. PERFORMANCE OPTIMIZATIONS:
+   - 
+   - 
+   - 
+
+7. ERROR HANDLING & VALIDATION:
+   - 
+   - 
+   - 
+
+8. ADDITIONAL FEATURES TO ADD:
+   - 
+   - 
+   - 
+
+9. TECHNICAL DEBT TO ADDRESS:
+   - 
+   - 
+   - 
+
+10. GENERAL CODE QUALITY IMPROVEMENTS:
+    - 
+    - 
+    - 
+
+=== ANALYSIS QUESTIONS ===
+
+REFERENCE vs VALUE COMPARISON:
+- What happens when you compare two Cat objects with identical properties?
+- How does ReferenceEquals() differ from Equals() in this context?
+- Explain the difference between Animal animal1 = cat1 and Animal animal2 = cat1 vs cat2
+
+SHADOWING BEHAVIOR:
+- Why does Cat.DisplayInfo() show different output than calling it through Animal reference?
+- What's the difference between 'new', 'virtual', and 'override' keywords in this project?
+- How does field shadowing affect accessing Cat.name vs Animal.name?
+
+POLYMORPHISM:
+- What happens when you store a Cat in an Animal variable and call MakeSound()?
+- Explain why some methods behave polymorphically while others don't
+- How does the 'new' keyword break polymorphic behavior?
+
+ACCESS LEVELS:
+- Which fields/methods can be accessed from the test classes and why?
+- What's the difference between 'protected', 'internal', and 'private' in inheritance?
+- How does 'internal' access work across assemblies (main project vs test project)?
+
+=== ADDITIONAL NOTES ===
+
+Current Known Issues:
+- Field shadowing makes code confusing and hard to maintain
+- Mixed use of 'new' vs 'virtual'/'override' creates inconsistent behavior
+- Some methods violate single responsibility principle
+- Limited error handling and validation
+- Hard-coded values in several places
+- Console.WriteLine mixed with business logic
+
+Strengths:
+- Good demonstration of inheritance concepts
+- Comprehensive test coverage
+- Clear separation of concerns between Models and Services
+- Good use of different access modifiers for educational purposes
+
+=== SUBMISSION ===
+
+Date: _______________
+Reviewed by: _______________
