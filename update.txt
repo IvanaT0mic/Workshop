@@ -4,33 +4,59 @@ INSTRUCTIONS:
 Please write your name and provide suggestions for refactoring this AnimalShelter project.
 Focus on improving code quality, design patterns, and addressing potential issues.
 
+<<<<<<< HEAD
 NAME: ________________________
+=======
+NAME: Jan
+>>>>>>> 6ad5d5d (tried to make the functions for unit tests runnable)
 
 REFACTORING SUGGESTIONS:
 
 1. CODE STRUCTURE & ORGANIZATION:
+<<<<<<< HEAD
    - 
    - 
    - 
 
 2. INHERITANCE & POLYMORPHISM IMPROVEMENTS:
    - 
+=======
+   - You could implement an interface which gets implemented of human and animal because they share the same methods. The interface has the basics of dog, cat and human.
+   - You can use the readonly to make the code clearer if it's not possible to change the attribute after initialization.
+   - 
+
+2. INHERITANCE & POLYMORPHISM IMPROVEMENTS:
+   - Animal has protected name but in cat you create another attribute name which is private. I think that could lead to misunderstandings and you better name it "catName" since the field already exists.
+>>>>>>> 6ad5d5d (tried to make the functions for unit tests runnable)
    - 
    - 
 
 3. ACCESS MODIFIERS & ENCAPSULATION:
+<<<<<<< HEAD
    - 
+=======
+   - Use private instead of protected access modifiers if you won't inherit cat/dog. This also applies to the setters of an object. 
+>>>>>>> 6ad5d5d (tried to make the functions for unit tests runnable)
    - 
    - 
 
 4. DESIGN PATTERNS TO IMPLEMENT:
+<<<<<<< HEAD
    - 
+=======
+   - You could improve the encapsulation. You are using public at the Animal constructor but you could use protected and make it public in the inherited classes if you need to. (in tests)
+>>>>>>> 6ad5d5d (tried to make the functions for unit tests runnable)
    - 
    - 
 
 5. TESTING IMPROVEMENTS:
+<<<<<<< HEAD
    - 
    - 
+=======
+   - Unused import
+   - Useless constructor, gets inherited of Animal
+>>>>>>> 6ad5d5d (tried to make the functions for unit tests runnable)
    - 
 
 6. PERFORMANCE OPTIMIZATIONS:
@@ -39,7 +65,11 @@ REFACTORING SUGGESTIONS:
    - 
 
 7. ERROR HANDLING & VALIDATION:
+<<<<<<< HEAD
    - 
+=======
+   - You should check if a string value like name is null otherwise it will get an error.
+>>>>>>> 6ad5d5d (tried to make the functions for unit tests runnable)
    - 
    - 
 
@@ -47,14 +77,22 @@ REFACTORING SUGGESTIONS:
    - 
    - 
    - 
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> 6ad5d5d (tried to make the functions for unit tests runnable)
 9. TECHNICAL DEBT TO ADDRESS:
    - 
    - 
    - 
 
 10. GENERAL CODE QUALITY IMPROVEMENTS:
+<<<<<<< HEAD
     - 
+=======
+    - Attributes of objects Pascal Case.
+>>>>>>> 6ad5d5d (tried to make the functions for unit tests runnable)
     - 
     - 
 

@@ -7,17 +7,28 @@ public class ShelterService
     private List<Animal> animals;
     protected int capacity;
     internal string shelterName;
+<<<<<<< HEAD
     
     public int Count => animals.Count;
     public bool IsFull => animals.Count >= capacity;
     
+=======
+
+    public int Count => animals.Count;
+    public bool IsFull => animals.Count >= capacity;
+
+>>>>>>> 6ad5d5d (tried to make the functions for unit tests runnable)
     public ShelterService(string name, int maxCapacity = 20)
     {
         animals = new List<Animal>();
         capacity = maxCapacity;
         shelterName = name;
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 6ad5d5d (tried to make the functions for unit tests runnable)
     public void AddCat(string name, int age, double weight, string breed, bool isIndoor = true)
     {
         if (!IsFull)
@@ -31,7 +42,11 @@ public class ShelterService
             Console.WriteLine($"Shelter {shelterName} is full!");
         }
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 6ad5d5d (tried to make the functions for unit tests runnable)
     public void AddDog(string name, int age, double weight, string breed, bool isVaccinated = true)
     {
         if (!IsFull)
@@ -45,7 +60,11 @@ public class ShelterService
             Console.WriteLine($"Shelter {shelterName} is full!");
         }
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 6ad5d5d (tried to make the functions for unit tests runnable)
     public void FeedAllAnimals()
     {
         Console.WriteLine($"\nFeeding time at {shelterName}!");
@@ -54,7 +73,11 @@ public class ShelterService
             animal.Eat();
         }
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 6ad5d5d (tried to make the functions for unit tests runnable)
     public void MakeAllAnimalsSounds()
     {
         Console.WriteLine($"\nAnimals at {shelterName} are making sounds:");
@@ -63,7 +86,11 @@ public class ShelterService
             animal.MakeSound();
         }
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 6ad5d5d (tried to make the functions for unit tests runnable)
     public void DisplayAllAnimals()
     {
         Console.WriteLine($"\n=== Animals at {shelterName} ===");
@@ -73,7 +100,11 @@ public class ShelterService
             Console.WriteLine();
         }
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 6ad5d5d (tried to make the functions for unit tests runnable)
     public void DisplayAnimalDetails()
     {
         Console.WriteLine($"\n=== Detailed info at {shelterName} ===");
@@ -94,7 +125,11 @@ public class ShelterService
             Console.WriteLine();
         }
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 6ad5d5d (tried to make the functions for unit tests runnable)
     public void TrainDogs(string activity)
     {
         Console.WriteLine($"\nTraining session at {shelterName}:");
@@ -106,7 +141,11 @@ public class ShelterService
             }
         }
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 6ad5d5d (tried to make the functions for unit tests runnable)
     public void LetCatsClimb()
     {
         Console.WriteLine($"\nCats climbing at {shelterName}:");
@@ -118,20 +157,32 @@ public class ShelterService
             }
         }
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 6ad5d5d (tried to make the functions for unit tests runnable)
     internal void ShowShelterStats()
     {
         var cats = animals.OfType<Cat>().Count();
         var dogs = animals.OfType<Dog>().Count();
         Console.WriteLine($"\n{shelterName} Stats: {cats} cats, {dogs} dogs, {Count}/{capacity} total");
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 6ad5d5d (tried to make the functions for unit tests runnable)
     private void ResetShelter()
     {
         animals.Clear();
         Console.WriteLine($"Shelter {shelterName} has been reset");
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 6ad5d5d (tried to make the functions for unit tests runnable)
     protected virtual void ProcessAdmission(Animal animal)
     {
         Console.WriteLine($"Processing admission for {animal.Species}");
