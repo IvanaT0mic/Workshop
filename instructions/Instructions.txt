@@ -1,0 +1,20 @@
+Add ans on your questions:
+
+4 basic principles of OOP: 
+  Encapsulation, 
+  Abstraction, 
+  Inheritance
+  Polymorphism
+
+What's is class and what's object? What is the difference?
+
+Abstraction, Encapsulation - how is it different from abstraction; access modifiers
+
+Problems with multiple inheritance; example (not codding one)
+
+Polymorphism (static one and dynamic one)
+ 
+Data types: value types and reference types? Where are we saving then in memory?
+Comparation by value and comparation by reference? 
+
+Garbage collector; phases of cleaning memory?
