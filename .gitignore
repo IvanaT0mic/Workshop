@@ -58,6 +58,15 @@ bld/
 *.[Cc]ache
 !?*.[Cc]ache/
 
+# Additional cache patterns
+*.cache
+*.assets.cache
+*.csproj.FileListAbsolute.txt
+*.csproj.CoreCompileInputs.cache
+*.genruntimeconfig.cache
+project.nuget.cache
+project.assets.json
+
 # Others
 *.dbmdl
 *.dbproj.schemaview
