@@ -1,3 +1,5 @@
+using OrderManagement.Controllers;
+
 namespace OrderManagement.IntegrationTests
 {
     public class TestStartup

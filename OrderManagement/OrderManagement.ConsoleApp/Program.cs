@@ -188,7 +188,7 @@ namespace OrderManagement.ConsoleApp
         private static async Task ViewAllItems()
         {
             Console.WriteLine("\n=== All Items ===");
-            var items = await _itemController.GetAllItemsAsync();
+            var items = await _itemController.GetAllItems();
             
             foreach (var item in items)
             {
@@ -320,7 +320,7 @@ namespace OrderManagement.ConsoleApp
                 Category = category
             };
 
-            var result = await _itemController.UpdateItemAsync(id, updatedItem);
+            var result = await _itemController.UpdateItem(id, updatedItem);
             if (result != null)
             {
                 Console.WriteLine("Item updated successfully.");
@@ -375,7 +375,7 @@ namespace OrderManagement.ConsoleApp
                 return;
             }
 
-            var inStock = await _itemController.CheckStockAsync(itemId, quantity);
+            var inStock = await _itemController.CheckStock(itemId, quantity);
             Console.WriteLine(inStock ? "Item is in stock." : "Insufficient stock or item not found.");
         }
 
