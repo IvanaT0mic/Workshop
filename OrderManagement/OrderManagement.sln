@@ -1,0 +1,60 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.Models", "OrderManagement.Models\OrderManagement.Models.csproj", "{1E8B5C4A-1234-4567-8901-123456789012}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.DataAccess", "OrderManagement.DataAccess\OrderManagement.DataAccess.csproj", "{2E8B5C4A-1234-4567-8901-123456789013}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.Repository", "OrderManagement.Repository\OrderManagement.Repository.csproj", "{3E8B5C4A-1234-4567-8901-123456789014}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.Services", "OrderManagement.Services\OrderManagement.Services.csproj", "{4E8B5C4A-1234-4567-8901-123456789015}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.Controllers", "OrderManagement.Controllers\OrderManagement.Controllers.csproj", "{5E8B5C4A-1234-4567-8901-123456789016}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.ConsoleApp", "OrderManagement.ConsoleApp\OrderManagement.ConsoleApp.csproj", "{6E8B5C4A-1234-4567-8901-123456789017}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.UnitTests", "OrderManagement.UnitTests\OrderManagement.UnitTests.csproj", "{7E8B5C4A-1234-4567-8901-123456789018}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.IntegrationTests", "OrderManagement.IntegrationTests\OrderManagement.IntegrationTests.csproj", "{8E8B5C4A-1234-4567-8901-123456789019}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1E8B5C4A-1234-4567-8901-123456789012}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E8B5C4A-1234-4567-8901-123456789012}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E8B5C4A-1234-4567-8901-123456789012}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E8B5C4A-1234-4567-8901-123456789012}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E8B5C4A-1234-4567-8901-123456789013}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E8B5C4A-1234-4567-8901-123456789013}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E8B5C4A-1234-4567-8901-123456789013}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E8B5C4A-1234-4567-8901-123456789013}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E8B5C4A-1234-4567-8901-123456789014}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E8B5C4A-1234-4567-8901-123456789014}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E8B5C4A-1234-4567-8901-123456789014}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E8B5C4A-1234-4567-8901-123456789014}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E8B5C4A-1234-4567-8901-123456789015}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E8B5C4A-1234-4567-8901-123456789015}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E8B5C4A-1234-4567-8901-123456789015}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E8B5C4A-1234-4567-8901-123456789015}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E8B5C4A-1234-4567-8901-123456789016}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E8B5C4A-1234-4567-8901-123456789016}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E8B5C4A-1234-4567-8901-123456789016}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E8B5C4A-1234-4567-8901-123456789016}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E8B5C4A-1234-4567-8901-123456789017}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E8B5C4A-1234-4567-8901-123456789017}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E8B5C4A-1234-4567-8901-123456789017}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E8B5C4A-1234-4567-8901-123456789017}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E8B5C4A-1234-4567-8901-123456789018}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E8B5C4A-1234-4567-8901-123456789018}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E8B5C4A-1234-4567-8901-123456789018}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E8B5C4A-1234-4567-8901-123456789018}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E8B5C4A-1234-4567-8901-123456789019}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E8B5C4A-1234-4567-8901-123456789019}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E8B5C4A-1234-4567-8901-123456789019}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E8B5C4A-1234-4567-8901-123456789019}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

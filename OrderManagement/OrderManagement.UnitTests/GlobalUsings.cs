@@ -1,0 +1,10 @@
+global using Xunit;
+global using Moq;
+global using FluentAssertions;
+global using AutoFixture;
+global using AutoFixture.Xunit2;
+global using OrderManagement.Models;
+global using OrderManagement.Repository.Interfaces;
+global using OrderManagement.Services.Interfaces;
+global using OrderManagement.Services;
+global using OrderManagement.Controllers;

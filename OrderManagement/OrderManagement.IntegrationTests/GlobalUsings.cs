@@ -1,0 +1,15 @@
+global using Xunit;
+global using FluentAssertions;
+global using AutoFixture;
+global using AutoFixture.Xunit2;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Hosting;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.Logging;
+global using OrderManagement.Models;
+global using OrderManagement.Repository;
+global using OrderManagement.Repository.Interfaces;
+global using OrderManagement.Services;
+global using OrderManagement.Services.Interfaces;
+global using OrderManagement.Controllers;
+global using OrderManagement.DataAccess;
