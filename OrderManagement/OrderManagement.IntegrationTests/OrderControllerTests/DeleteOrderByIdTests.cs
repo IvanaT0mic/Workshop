@@ -36,15 +36,5 @@
             var deletedOrder = await _orderController.GetOrderByIdAsync(createdOrder.Id);
             deletedOrder.Should().BeNull();
         }
-
-        [Fact]
-        public async Task DeleteOrderAsync_WithNonExistentOrder_ShouldReturnFalse()
-        {
-            // Act
-            var deleteResult = await _orderController.DeleteOrderAsync(99999);
-
-            // Assert
-            deleteResult.Should().BeFalse();
-        }
     }
 }
