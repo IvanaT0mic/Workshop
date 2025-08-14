@@ -12,6 +12,24 @@ if not exist "OrderManagement.sln" (
     exit /b 1
 )
 
+REM Check if ReportGenerator is installed, install if not
+echo Checking for ReportGenerator tool...
+reportgenerator --help >nul 2>&1
+if errorlevel 1 (
+    echo ReportGenerator not found. Installing...
+    dotnet tool install -g dotnet-reportgenerator-globaltool
+    if errorlevel 1 (
+        echo ERROR: Failed to install ReportGenerator!
+        echo Please run manually: dotnet tool install -g dotnet-reportgenerator-globaltool
+        pause
+        exit /b 1
+    )
+    echo ReportGenerator installed successfully!
+) else (
+    echo ReportGenerator is already installed.
+)
+echo.
+
 REM Clean up previous coverage files
 echo Cleaning up previous coverage files...
 if exist "coverage-html" rmdir /s /q "coverage-html"
