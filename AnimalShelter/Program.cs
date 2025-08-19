@@ -1,4 +1,5 @@
 ﻿using AnimalShelter.Models;
+using AnimalShelter.Pizza.services;
 using AnimalShelter.Services;
 
 var shelter = new ShelterService("Happy Paws Shelter", 10);
@@ -40,3 +41,24 @@ Console.WriteLine("- Cat.DisplayInfo uses 'new' (hides base method)");
 Console.WriteLine("- Dog.DisplayInfo uses 'new virtual' (creates new hierarchy)");
 Console.WriteLine("- GetInternalInfo shows different internal access levels");
 Console.WriteLine("- Weight calculations affected by protected overrides");
+
+var pizzaService = new PizzaService("Pizzeria String", 32);
+
+pizzaService.addFunghi(pizzaService.LargePizzaSizeInCm, 35);
+pizzaService.addMargherita(pizzaService.StandardPizzaSizeInCm,19);
+pizzaService.addMargherita(pizzaService.SmallPizzaSizeInCm,14, 4);
+
+// test eating slice
+pizzaService.DisplayAllPizzas();
+
+pizzaService.pizzas[2].eatSlice(); 
+
+pizzaService.pizzas[2].ShowPizzaInfo();
+
+pizzaService.pizzas[2].cutSlice();
+pizzaService.pizzas[2].cutSlice();
+pizzaService.pizzas[2].cutSlice();
+
+pizzaService.pizzas[2].ShowPizzaInfo();
+
+

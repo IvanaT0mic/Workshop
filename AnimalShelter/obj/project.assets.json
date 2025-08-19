@@ -8,25 +8,19 @@
     "net9.0": []
   },
   "packageFolders": {
-    "C:\\Users\\ivato\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "/home/kristijan/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ivato\\Projects\\Mentorship\\Workshop-Git-V1\\Workshop\\AnimalShelter\\AnimalShelter.csproj",
+      "projectUniqueName": "/home/kristijan/Documents/0_Consulteer/git/Workshop/AnimalShelter/AnimalShelter.csproj",
       "projectName": "AnimalShelter",
-      "projectPath": "C:\\Users\\ivato\\Projects\\Mentorship\\Workshop-Git-V1\\Workshop\\AnimalShelter\\AnimalShelter.csproj",
-      "packagesPath": "C:\\Users\\ivato\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ivato\\Projects\\Mentorship\\Workshop-Git-V1\\Workshop\\AnimalShelter\\obj\\",
+      "projectPath": "/home/kristijan/Documents/0_Consulteer/git/Workshop/AnimalShelter/AnimalShelter.csproj",
+      "packagesPath": "/home/kristijan/.nuget/packages/",
+      "outputPath": "/home/kristijan/Documents/0_Consulteer/git/Workshop/AnimalShelter/obj/",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\ivato\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/home/kristijan/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
@@ -50,7 +44,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.300"
+      "SdkAnalysisLevel": "9.0.100"
     },
     "frameworks": {
       "net9.0": {
@@ -66,12 +60,18 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[9.0.7, 9.0.7]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.108/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

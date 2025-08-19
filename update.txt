@@ -4,22 +4,22 @@ INSTRUCTIONS:
 Please write your name and provide suggestions for refactoring this AnimalShelter project.
 Focus on improving code quality, design patterns, and addressing potential issues.
 
-NAME: ________________________
+NAME: Kristijan_______________
 
 REFACTORING SUGGESTIONS:
 
 1. CODE STRUCTURE & ORGANIZATION:
-   - 
-   - 
+   - Code is well organized, and easy to undrestand.
+   - Would prefer to have more comments
    - 
 
 2. INHERITANCE & POLYMORPHISM IMPROVEMENTS:
-   - 
+   - Inheritance is well defined and easy to understand
    - 
    - 
 
 3. ACCESS MODIFIERS & ENCAPSULATION:
-   - 
+   - Too many datatypes that are public
    - 
    - 
 
@@ -44,7 +44,7 @@ REFACTORING SUGGESTIONS:
    - 
 
 8. ADDITIONAL FEATURES TO ADD:
-   - 
+   - show state of animals (happy, angry, hungry, etc.)
    - 
    - 
 
@@ -98,5 +98,5 @@ Strengths:
 
 === SUBMISSION ===
 
-Date: _______________
-Reviewed by: _______________
+Date: 2025-08-05_____
+Reviewed by: Kristijan______

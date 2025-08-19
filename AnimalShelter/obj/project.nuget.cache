@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "dofXp22KF+Y=",
+  "dgSpecHash": "S0estqEv3tk=",
   "success": true,
-  "projectFilePath": "C:\\Users\\ivato\\Projects\\Mentorship\\Workshop-Git-V1\\Workshop\\AnimalShelter\\AnimalShelter.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "/home/kristijan/Documents/0_Consulteer/git/Workshop/AnimalShelter/AnimalShelter.csproj",
+  "expectedPackageFiles": [
+    "/home/kristijan/.nuget/packages/microsoft.aspnetcore.app.ref/9.0.7/microsoft.aspnetcore.app.ref.9.0.7.nupkg.sha512"
+  ],
   "logs": []
 }
