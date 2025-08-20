@@ -20,7 +20,7 @@ namespace OrderManagement.Services
 
         public async Task<Item?> GetItemByIdAsync(int id)
         {
-            if (id <= 0)
+            if (id <= 0) 
                 return null;
 
             return await _itemRepository.GetByIdAsync(id);
@@ -41,6 +41,7 @@ namespace OrderManagement.Services
             return await _itemRepository.CreateAsync(item);
         }
 
+        //TODO: Use an ItemDTO for update without the id
         public async Task<Item?> UpdateItemAsync(int id, Item item)
         {
             if (id <= 0)
@@ -63,8 +64,6 @@ namespace OrderManagement.Services
         {
             if (id <= 0)
                 return false;
-
-
 
             return await _itemRepository.DeleteAsync(id);
         }

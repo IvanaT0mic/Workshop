@@ -11,7 +11,7 @@
         {
             _mockOrderRepository = new Mock<IOrderRepository>();
             _mockItemRepository = new Mock<IItemRepository>();
-            _orderService = new Services.OrderService(_mockOrderRepository.Object, _mockItemRepository.Object);
+            _orderService = new OrderService(_mockOrderRepository.Object, _mockItemRepository.Object);
             _fixture = new Fixture();
 
             // Configure AutoFixture to handle circular references
