@@ -1,13 +1,13 @@
 ﻿namespace OrderManagement.UnitTests.OrderServiceTests
 {
-    public class DeleteOrderAsync
+    public class DeleteOrderTests
     {
         private readonly Mock<IOrderRepository> _mockOrderRepository;
         private readonly Mock<IItemRepository> _mockItemRepository;
         private readonly OrderService _orderService;
         private readonly IFixture _fixture;
 
-        public DeleteOrderAsync()
+        public DeleteOrderTests()
         {
             _mockOrderRepository = new Mock<IOrderRepository>();
             _mockItemRepository = new Mock<IItemRepository>();

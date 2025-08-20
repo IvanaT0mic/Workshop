@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OrderManagement.UnitTests.ItemServiceTests;
 
-public class DeleteItemAsync : ItemServiceTestBase
+public class DeleteItemTests : ItemServiceTestBase
 {
     [Fact]
     public async Task DeleteItemAsync_WithValidId_ShouldDeleteItem()

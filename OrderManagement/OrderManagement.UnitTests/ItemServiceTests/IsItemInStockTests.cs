@@ -2,7 +2,7 @@
 
 namespace OrderManagement.UnitTests.ItemServiceTests;
 
-public class IsItemInStockAsync : ItemServiceTestBase
+public class IsItemInStockTests : ItemServiceTestBase
 {
     [Fact]
     public async Task IsItemInStockAsync_WhenStockIsEqualToQuantity_ShouldReturnTrue()

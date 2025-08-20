@@ -2,7 +2,7 @@
 
 namespace OrderManagement.UnitTests.ItemServiceTests;
 
-public class SearchItemsAsync : ItemServiceTestBase
+public class SearchItemsTests : ItemServiceTestBase
 {
     [Theory]
     [InlineData(null)]

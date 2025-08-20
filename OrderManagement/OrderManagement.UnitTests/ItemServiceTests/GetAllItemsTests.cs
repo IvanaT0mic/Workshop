@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OrderManagement.UnitTests.ItemServiceTests;
 
-public class GetAllItemsAsync : ItemServiceTestBase
+public class GetAllItemsTests : ItemServiceTestBase
 {
     [Fact]
     public async Task GetAllItemsAsync_ShouldGetAllItemsSuccessfully()

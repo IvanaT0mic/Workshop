@@ -2,7 +2,7 @@
 
 namespace OrderManagement.UnitTests.ItemServiceTests;
 
-public class UpdateItemAsync : ItemServiceTestBase
+public class UpdateItemTests : ItemServiceTestBase
 {
     [Fact]
     public async Task UpdateItemAsync_WithValidItemAndId_ShouldUpdateSuccessfully()

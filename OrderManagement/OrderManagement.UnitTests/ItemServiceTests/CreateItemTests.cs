@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace OrderManagement.UnitTests.ItemServiceTests;
 
-public class CreateItemAsync : ItemServiceTestBase
+public class CreateItemTests : ItemServiceTestBase
 {
     [Fact]
     public async Task CreateItemAsync_WithValidItem_ShouldCreateSuccessfully()

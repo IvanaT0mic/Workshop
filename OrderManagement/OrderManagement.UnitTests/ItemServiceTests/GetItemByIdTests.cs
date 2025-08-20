@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OrderManagement.UnitTests.ItemServiceTests;
 
-public class GetItemByIdAsync : ItemServiceTestBase
+public class GetItemByIdTests : ItemServiceTestBase
 {
     [Fact]
     public async Task GetItemByIdAsync_WithValidId_ShouldGetItemById()
