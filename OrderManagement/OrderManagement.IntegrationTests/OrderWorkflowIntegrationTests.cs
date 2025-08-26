@@ -1,21 +1,13 @@
-using OrderManagement.Controllers;
-
 namespace OrderManagement.IntegrationTests
 {
     public class OrderWorkflowIntegrationTests : IntegrationTestBase
     {
-        private readonly ItemController _itemController;
-        private readonly OrderController _orderController;
-
-        public OrderWorkflowIntegrationTests()
-        {
-            _itemController = GetService<ItemController>();
-            _orderController = GetService<OrderController>();
-        }
-
         [Fact]
         public async Task CompleteOrderWorkflow_CreateItemsCreateOrderAddItemsAndCalculateTotal_ShouldWorkEndToEnd()
         {
+            var (_testDb, _itemController) = CreateController<ItemController, ItemService, ItemRepository>();
+            var _orderController = CreateController<OrderController, OrderService, OrderRepository, ItemRepository>(_testDb);
+
             // Arrange - Create test items first
             var laptopItem = _fixture.Build<Item>()
                 .With(i => i.Name, "Gaming Laptop")
@@ -127,6 +119,9 @@ namespace OrderManagement.IntegrationTests
         [Fact]
         public async Task OrderWorkflow_TryToAddMoreItemsThanInStock_ShouldHandleGracefully()
         {
+            var (_testDb, _itemController) = CreateController<ItemController, ItemService, ItemRepository>();
+            var _orderController = CreateController<OrderController, OrderService, OrderRepository, ItemRepository>(_testDb);
+
             // Arrange - Create a limited stock item
             var limitedItem = _fixture.Build<Item>()
                 .With(i => i.Name, "Limited Edition Headphones")
@@ -151,7 +146,7 @@ namespace OrderManagement.IntegrationTests
 
             // Act - Try to add more items than available in stock
             // This should throw an exception due to insufficient stock
-            var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => 
+            var exception = await Assert.ThrowsAsync<InvalidOperationException>(() =>
                 _orderController.AddItemToOrderAsync(createdOrder.Id, createdItem.Id, 5)); // Requesting 5, but only 2 available
 
             // Assert - Should throw exception with appropriate message
@@ -172,6 +167,9 @@ namespace OrderManagement.IntegrationTests
         [Fact]
         public async Task OrderWorkflow_RemoveItemFromOrder_ShouldUpdateOrderCorrectly()
         {
+            var (_testDb, _itemController) = CreateController<ItemController, ItemService, ItemRepository>();
+            var _orderController = CreateController<OrderController, OrderService, OrderRepository, ItemRepository>(_testDb);
+
             // Arrange - Create item and order with that item
             var testItem = _fixture.Build<Item>()
                 .With(i => i.Name, "Test Product")

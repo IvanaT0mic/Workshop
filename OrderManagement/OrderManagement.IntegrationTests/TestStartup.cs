@@ -2,7 +2,7 @@ using OrderManagement.Controllers;
 
 namespace OrderManagement.IntegrationTests
 {
-    public class TestStartup
+    public static class TestStartup
     {
         public static IServiceProvider ConfigureServices()
         {

@@ -2,149 +2,141 @@ using OrderManagement.DataAccess;
 using OrderManagement.Models;
 using OrderManagement.Repository.Interfaces;
 
-namespace OrderManagement.Repository
+namespace OrderManagement.Repository;
+
+public class OrderRepository(IInMemoryDatabase database) : IOrderRepository
 {
-    public class OrderRepository : IOrderRepository
+    public async Task<IEnumerable<Order>> GetAllAsync()
     {
-        private readonly InMemoryDatabase _database;
+        await Task.Delay(1);
+        return database.Orders.ToList();
+    }
 
-        public OrderRepository()
+    public async Task<Order?> GetByIdAsync(int id)
+    {
+        await Task.Delay(1);
+        var order = database.Orders.FirstOrDefault(o => o.Id == id);
+        if (order != null)
         {
-            _database = InMemoryDatabase.Instance;
-        }
-
-        public async Task<IEnumerable<Order>> GetAllAsync()
-        {
-            await Task.Delay(1);
-            return _database.Orders.ToList();
-        }
-
-        public async Task<Order?> GetByIdAsync(int id)
-        {
-            await Task.Delay(1);
-            var order = _database.Orders.FirstOrDefault(o => o.Id == id);
-            if (order != null)
+            order.OrderItems = database.OrderItems.Where(oi => oi.OrderId == id).ToList();
+            foreach (var orderItem in order.OrderItems)
             {
-                order.OrderItems = _database.OrderItems.Where(oi => oi.OrderId == id).ToList();
-                foreach (var orderItem in order.OrderItems)
-                {
-                    orderItem.Item = _database.Items.FirstOrDefault(i => i.Id == orderItem.ItemId);
-                }
+                orderItem.Item = database.Items.FirstOrDefault(i => i.Id == orderItem.ItemId);
             }
-            return order;
+        }
+        return order;
+    }
+
+    public async Task<Order> CreateAsync(Order order)
+    {
+        await Task.Delay(1);
+        order.Id = database.GetNextOrderId();
+        order.OrderDate = DateTime.Now;
+        database.Orders.Add(order);
+        return order;
+    }
+
+    public async Task<Order?> UpdateAsync(int id, Order order)
+    {
+        await Task.Delay(1);
+        var existingOrder = database.Orders.FirstOrDefault(o => o.Id == id);
+        if (existingOrder == null)
+            return null;
+
+        existingOrder.CustomerName = order.CustomerName;
+        existingOrder.Status = order.Status;
+        existingOrder.TotalAmount = order.TotalAmount;
+
+        return existingOrder;
+    }
+
+    public async Task<bool> DeleteAsync(int id)
+    {
+        await Task.Delay(1);
+        var order = database.Orders.FirstOrDefault(o => o.Id == id);
+        if (order == null)
+            return false;
+
+
+        var orderItems = database.OrderItems.Where(oi => oi.OrderId == id).ToList();
+        foreach (var orderItem in orderItems)
+        {
+            database.OrderItems.Remove(orderItem);
         }
 
-        public async Task<Order> CreateAsync(Order order)
+        database.Orders.Remove(order);
+        return true;
+    }
+
+    public async Task<IEnumerable<Order>> GetByCustomerAsync(string customerName)
+    {
+        await Task.Delay(1);
+        return database.Orders.Where(o =>
+            o.CustomerName.Contains(customerName, StringComparison.OrdinalIgnoreCase)
+        ).ToList();
+    }
+
+    public async Task<Order?> AddItemToOrderAsync(int orderId, int itemId, int quantity)
+    {
+        await Task.Delay(1);
+        var order = database.Orders.FirstOrDefault(o => o.Id == orderId);
+        var item = database.Items.FirstOrDefault(i => i.Id == itemId);
+
+        if (order == null || item == null || item.StockQuantity < quantity)
+            return null;
+
+
+        var existingOrderItem = database.OrderItems.FirstOrDefault(oi => oi.OrderId == orderId && oi.ItemId == itemId);
+
+        if (existingOrderItem != null)
         {
-            await Task.Delay(1);
-            order.Id = _database.GetNextOrderId();
-            order.OrderDate = DateTime.Now;
-            _database.Orders.Add(order);
-            return order;
+            existingOrderItem.Quantity += quantity;
         }
-
-        public async Task<Order?> UpdateAsync(int id, Order order)
+        else
         {
-            await Task.Delay(1);
-            var existingOrder = _database.Orders.FirstOrDefault(o => o.Id == id);
-            if (existingOrder == null)
-                return null;
-
-            existingOrder.CustomerName = order.CustomerName;
-            existingOrder.Status = order.Status;
-            existingOrder.TotalAmount = order.TotalAmount;
-
-            return existingOrder;
-        }
-
-        public async Task<bool> DeleteAsync(int id)
-        {
-            await Task.Delay(1);
-            var order = _database.Orders.FirstOrDefault(o => o.Id == id);
-            if (order == null)
-                return false;
-
-
-            var orderItems = _database.OrderItems.Where(oi => oi.OrderId == id).ToList();
-            foreach (var orderItem in orderItems)
+            var orderItem = new OrderItem
             {
-                _database.OrderItems.Remove(orderItem);
-            }
-
-            _database.Orders.Remove(order);
-            return true;
+                Id = database.GetNextOrderItemId(),
+                OrderId = orderId,
+                ItemId = itemId,
+                Quantity = quantity,
+                UnitPrice = item.Price
+            };
+            database.OrderItems.Add(orderItem);
         }
 
-        public async Task<IEnumerable<Order>> GetByCustomerAsync(string customerName)
-        {
-            await Task.Delay(1);
-            return _database.Orders.Where(o => 
-                o.CustomerName.Contains(customerName, StringComparison.OrdinalIgnoreCase)
-            ).ToList();
-        }
 
-        public async Task<Order?> AddItemToOrderAsync(int orderId, int itemId, int quantity)
-        {
-            await Task.Delay(1);
-            var order = _database.Orders.FirstOrDefault(o => o.Id == orderId);
-            var item = _database.Items.FirstOrDefault(i => i.Id == itemId);
-
-            if (order == null || item == null || item.StockQuantity < quantity)
-                return null;
+        item.StockQuantity -= quantity;
 
 
-            var existingOrderItem = _database.OrderItems.FirstOrDefault(oi => oi.OrderId == orderId && oi.ItemId == itemId);
-            
-            if (existingOrderItem != null)
-            {
-                existingOrderItem.Quantity += quantity;
-            }
-            else
-            {
-                var orderItem = new OrderItem
-                {
-                    Id = _database.GetNextOrderItemId(),
-                    OrderId = orderId,
-                    ItemId = itemId,
-                    Quantity = quantity,
-                    UnitPrice = item.Price
-                };
-                _database.OrderItems.Add(orderItem);
-            }
+        order.TotalAmount = database.OrderItems
+            .Where(oi => oi.OrderId == orderId)
+            .Sum(oi => oi.TotalPrice);
+
+        return order;
+    }
+
+    public async Task<bool> RemoveItemFromOrderAsync(int orderId, int itemId)
+    {
+        await Task.Delay(1);
+        var orderItem = database.OrderItems.FirstOrDefault(oi => oi.OrderId == orderId && oi.ItemId == itemId);
+        var item = database.Items.FirstOrDefault(i => i.Id == itemId);
+        var order = database.Orders.FirstOrDefault(o => o.Id == orderId);
+
+        if (orderItem == null || item == null || order == null)
+            return false;
 
 
-            item.StockQuantity -= quantity;
+        item.StockQuantity += orderItem.Quantity;
 
 
-            order.TotalAmount = _database.OrderItems
-                .Where(oi => oi.OrderId == orderId)
-                .Sum(oi => oi.TotalPrice);
-
-            return order;
-        }
-
-        public async Task<bool> RemoveItemFromOrderAsync(int orderId, int itemId)
-        {
-            await Task.Delay(1);
-            var orderItem = _database.OrderItems.FirstOrDefault(oi => oi.OrderId == orderId && oi.ItemId == itemId);
-            var item = _database.Items.FirstOrDefault(i => i.Id == itemId);
-            var order = _database.Orders.FirstOrDefault(o => o.Id == orderId);
-
-            if (orderItem == null || item == null || order == null)
-                return false;
+        database.OrderItems.Remove(orderItem);
 
 
-            item.StockQuantity += orderItem.Quantity;
+        order.TotalAmount = database.OrderItems
+            .Where(oi => oi.OrderId == orderId)
+            .Sum(oi => oi.TotalPrice);
 
-
-            _database.OrderItems.Remove(orderItem);
-
-
-            order.TotalAmount = _database.OrderItems
-                .Where(oi => oi.OrderId == orderId)
-                .Sum(oi => oi.TotalPrice);
-
-            return true;
-        }
+        return true;
     }
 }

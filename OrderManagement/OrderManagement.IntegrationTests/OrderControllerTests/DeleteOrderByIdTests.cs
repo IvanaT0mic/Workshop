@@ -1,40 +1,29 @@
-﻿namespace OrderManagement.IntegrationTests.OrderControllerTests
+﻿namespace OrderManagement.IntegrationTests.OrderControllerTests;
+
+public class DeleteOrderByIdTests : IntegrationTestBase
 {
-    public class DeleteOrderByIdTests : IntegrationTestBase
+    [Fact]
+    public async Task DeleteOrderAsync_WithExistingOrder_ShouldDeleteSuccessfully()
     {
-        private readonly OrderController _orderController;
-        private readonly ItemController _itemController;
+        var (_testDb, _itemController) = CreateController<ItemController, ItemService, ItemRepository>();
+        var _orderController = CreateController<OrderController, OrderService, OrderRepository, ItemRepository>(_testDb);
 
-        public DeleteOrderByIdTests()
-        {
-            _orderController = GetService<OrderController>();
-            _itemController = GetService<ItemController>();
-        }
+        // Arrange
+        var newOrder = _fixture.Build<Order>()
+            .With(o => o.Id, _testDb.GetNextOrderId())
+            .Create();
 
-        [Fact]
-        public async Task DeleteOrderAsync_WithExistingOrder_ShouldDeleteSuccessfully()
-        {
-            // Arrange
-            var newOrder = _fixture.Build<Order>()
-                .With(o => o.CustomerName, "Order to Delete")
-                .Without(o => o.Id)
-                .Without(o => o.OrderDate)
-                .Without(o => o.Status)
-                .Without(o => o.TotalAmount)
-                .Without(o => o.OrderItems)
-                .Create();
+        _testDb.Orders.Add(newOrder);
+        _testDb.Orders.Should().Contain(newOrder);
 
-            var createdOrder = await _orderController.CreateOrderAsync(newOrder);
+        // Act
+        var deleteResult = await _orderController.DeleteOrderAsync(newOrder.Id);
 
-            // Act
-            var deleteResult = await _orderController.DeleteOrderAsync(createdOrder.Id);
+        // Assert
+        deleteResult.Should().BeTrue();
 
-            // Assert
-            deleteResult.Should().BeTrue();
-
-            // Verify order is deleted
-            var deletedOrder = await _orderController.GetOrderByIdAsync(createdOrder.Id);
-            deletedOrder.Should().BeNull();
-        }
+        // Verify order is deleted
+        var deletedOrder = await _orderController.GetOrderByIdAsync(newOrder.Id);
+        deletedOrder.Should().BeNull();
     }
 }

@@ -1,12 +1,10 @@
+using OrderManagement.DataAccess;
 using OrderManagement.Models;
 
-namespace OrderManagement.DataAccess;
+namespace OrderManagement.IntegrationTests;
 
-public sealed class InMemoryDatabase : IInMemoryDatabase
+public class InMemoryTestDatabase : IInMemoryDatabase
 {
-    private static InMemoryDatabase? _instance;
-    private static readonly Lock _lock = new();
-
     public List<Item> Items { get; set; } = [];
     public List<Order> Orders { get; set; } = [];
     public List<OrderItem> OrderItems { get; set; } = [];
@@ -15,31 +13,16 @@ public sealed class InMemoryDatabase : IInMemoryDatabase
     private int _nextOrderId = 1;
     private int _nextOrderItemId = 1;
 
-    private InMemoryDatabase()
+    public InMemoryTestDatabase()
     {
         SeedData();
-    }
-
-    public static InMemoryDatabase Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                lock (_lock)
-                {
-                    _instance ??= new InMemoryDatabase();
-                }
-            }
-            return _instance;
-        }
     }
 
     public int GetNextItemId() => _nextItemId++;
     public int GetNextOrderId() => _nextOrderId++;
     public int GetNextOrderItemId() => _nextOrderItemId++;
 
-    private void SeedData()
+    public void SeedData()
     {
 
         Items.AddRange(
@@ -48,6 +31,7 @@ public sealed class InMemoryDatabase : IInMemoryDatabase
             new() { Id = GetNextItemId(), Name = "Mouse", Description = "Wireless optical mouse", Price = 25.50m, StockQuantity = 50, Category = "Electronics" },
             new() { Id = GetNextItemId(), Name = "Keyboard", Description = "Mechanical gaming keyboard", Price = 75.00m, StockQuantity = 30, Category = "Electronics" },
             new() { Id = GetNextItemId(), Name = "Monitor", Description = "24-inch LED monitor", Price = 199.99m, StockQuantity = 15, Category = "Electronics" },
+            new() { Id = GetNextItemId(), Name = "Penny", Description = "Play coin", Price = 3.50m, StockQuantity = 15, Category = "Kids" },
             new() { Id = GetNextItemId(), Name = "Notebook", Description = "Spiral notebook", Price = 3.99m, StockQuantity = 100, Category = "Office Supplies" },
             new() { Id = GetNextItemId(), Name = "Pen", Description = "Blue ballpoint pen", Price = 1.50m, StockQuantity = 200, Category = "Office Supplies" }
         ]);
@@ -101,7 +85,7 @@ public sealed class InMemoryDatabase : IInMemoryDatabase
             UnitPrice = 75.00m
         };
 
-        OrderItems.AddRange(new List<OrderItem> { orderItem1, orderItem2, orderItem3 });
+        OrderItems.AddRange([orderItem1, orderItem2, orderItem3]);
 
 
         order1.TotalAmount = OrderItems.Where(oi => oi.OrderId == order1.Id).Sum(oi => oi.TotalPrice);
