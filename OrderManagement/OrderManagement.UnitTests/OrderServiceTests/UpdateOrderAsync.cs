@@ -68,4 +68,24 @@ public class UpdateOrderAsync
                 o.Status == "Processing" &&
                 o.TotalAmount == 5.5m)), Times.Once);
     }
+
+    [Theory]
+    [InlineData("")]
+    [InlineData(" ")]
+    [InlineData(null)]
+    public async Task UpdateOrderAsync_WithInvalidCustomerName_ShouldThrowArgumentException(string customerName)
+    {
+        // Arrange
+        var order = _fixture.Build<Order>()
+            .With(o => o.CustomerName, customerName)
+            .Create();
+        
+        // Act & Assert
+        var exception = await Assert.ThrowsAsync<ArgumentException>(() => _orderService.UpdateOrderAsync(1, order));
+        exception.Message.Should().Be("Customer name is required.");
+        
+        _mockOrderRepository.Verify(repo => repo.UpdateAsync(
+            It.IsAny<int>(),It.IsAny<Order>()), Times.Never());
+
+    }
 }
