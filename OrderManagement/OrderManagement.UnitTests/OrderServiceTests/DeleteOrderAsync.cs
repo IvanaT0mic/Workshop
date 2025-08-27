@@ -42,5 +42,20 @@
 
             _mockOrderRepository.Verify(repo => repo.DeleteAsync(It.IsAny<int>()), Times.Never);
         }
+        
+        [Theory]
+        [InlineData(0)]
+        [InlineData(-1)]
+        public async Task DeleteOrderAsync_WithIdLessThanOrEqualsZero_ShouldReturnFalse(int id)
+        {
+            // Arrange
+            bool expectedReturn = false;
+            
+            // Act & Assert
+            var result = await _orderService.DeleteOrderAsync(id);
+            result.Should().BeFalse();
+            
+            _mockOrderRepository.Verify(repo => repo.DeleteAsync(It.IsAny<int>()),Times.Never);
+        }
     }
 }
