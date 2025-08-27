@@ -88,4 +88,22 @@ public class UpdateOrderAsync
             It.IsAny<int>(),It.IsAny<Order>()), Times.Never());
 
     }
+    
+    [Theory]
+    [InlineData(0)]
+    [InlineData(-1)]
+    public async Task UpdateOrderAsync_WithIdLessThanOrEqualsZero_ShouldReturnNull(int id)
+    {
+        // Arrange
+        var order = _fixture.Build<Order>()
+            .Create();
+        
+        Order expectedReturn = null;
+        
+        // Act & Assert
+        var result = await _orderService.UpdateOrderAsync(id, order);
+        result.Should().BeNull();
+        
+        _mockOrderRepository.Verify(repo => repo.UpdateAsync(It.IsAny<int>(), It.IsAny<Order>()),Times.Never);
+    }
 }
