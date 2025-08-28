@@ -22,6 +22,32 @@ public class CalculateOrderTotalAsync
     }
 
     [Fact]
+    public async Task CalculateOrderTotalAsync_WithValidOrderId_ShouldCalculateTotalSuccessfully()
+    {
+        // Arrange
+        var orderId = 1;
+        var expectedTotal = 15.5m;
+        var order = _fixture.Build<Order>()
+                .With(o => o.Id, 1)
+                .With(o => o.CustomerName, "John Doe")
+                .With(o => o.Status, "Pending")
+                .With(o => o.TotalAmount, expectedTotal)
+                .Create();
+
+        _mockOrderRepository
+            .Setup(repo => repo.GetByIdAsync(It.Is<int>(o => o == orderId)))
+            .ReturnsAsync(order);
+        
+        // Act
+        var result = await _orderService.CalculateOrderTotalAsync(orderId);
+        
+        // Assert
+        result.Should().Be(expectedTotal);
+        
+        _mockOrderRepository.Verify(repo => repo.GetByIdAsync(It.Is<int>(o => o == orderId)), Times.Once);
+    }
+
+    [Fact]
     public async Task CalculateOrderTotalAsync_WithNullOrder_ShouldReturnZero()
     {
         // Arrange
