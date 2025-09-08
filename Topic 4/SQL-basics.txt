@@ -1,0 +1,6 @@
+Insert
+Select
+Update
+Delete
+
+(CRUD)
