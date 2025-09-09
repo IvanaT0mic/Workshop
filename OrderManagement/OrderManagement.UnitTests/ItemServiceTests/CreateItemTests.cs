@@ -50,7 +50,7 @@ public class CreateItemTests : ItemServiceTestBase
     [InlineData("")]
     [InlineData("    ")]
     [InlineData(null)]
-    public async Task CreateItemAsync_WithInvalidName_ShouldThrowArgumentException(string name)
+    public async Task CreateItemAsync_WithInvalidName_ShouldThrowArgumentException(string? name)
     {
         var item = _fixture.Build<Item>()
             .With(i => i.Name, name)

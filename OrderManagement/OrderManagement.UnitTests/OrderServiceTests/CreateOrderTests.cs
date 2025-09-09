@@ -5,7 +5,7 @@
         private readonly Mock<IOrderRepository> _mockOrderRepository;
         private readonly Mock<IItemRepository> _mockItemRepository;
         private readonly OrderService _orderService;
-        private readonly IFixture _fixture;
+        private readonly Fixture _fixture;
 
         public CreateOrderTests()
         {

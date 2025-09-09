@@ -4,20 +4,11 @@ using OrderManagement.Services.Interfaces;
 
 namespace OrderManagement.Services;
 
-public class OrderService : IOrderService
+public class OrderService(IOrderRepository orderRepository, IItemRepository itemRepository) : IOrderService
 {
-    private readonly IOrderRepository _orderRepository;
-    private readonly IItemRepository _itemRepository;
-
-    public OrderService(IOrderRepository orderRepository, IItemRepository itemRepository)
-    {
-        _orderRepository = orderRepository;
-        _itemRepository = itemRepository;
-    }
-
     public async Task<IEnumerable<Order>> GetAllOrdersAsync()
     {
-        return await _orderRepository.GetAllAsync();
+        return await orderRepository.GetAllAsync();
     }
 
     public async Task<Order?> GetOrderByIdAsync(int id)
@@ -25,7 +16,7 @@ public class OrderService : IOrderService
         if (id <= 0)
             return null;
 
-        return await _orderRepository.GetByIdAsync(id);
+        return await orderRepository.GetByIdAsync(id);
     }
 
     public async Task<Order> CreateOrderAsync(Order order)
@@ -39,7 +30,7 @@ public class OrderService : IOrderService
         order.Status = "Pending";
         order.TotalAmount = 0;
 
-        return await _orderRepository.CreateAsync(order);
+        return await orderRepository.CreateAsync(order);
     }
 
     public async Task<Order?> UpdateOrderAsync(int id, Order order)
@@ -51,7 +42,7 @@ public class OrderService : IOrderService
         if (string.IsNullOrWhiteSpace(order.CustomerName))
             throw new ArgumentException("Customer name is required.");
 
-        return await _orderRepository.UpdateAsync(id, order);
+        return await orderRepository.UpdateAsync(id, order);
     }
 
     public async Task<bool> DeleteOrderAsync(int id)
@@ -60,19 +51,23 @@ public class OrderService : IOrderService
             return false;
 
 
-        var order = await _orderRepository.GetByIdAsync(id);
+        var order = await orderRepository.GetByIdAsync(id);
+
+        if (order == null)
+            return false;
+
         if (order.Status == "Completed")
             throw new InvalidOperationException("Cannot delete completed orders.");
 
-        return await _orderRepository.DeleteAsync(id);
+        return await orderRepository.DeleteAsync(id);
     }
 
     public async Task<IEnumerable<Order>> GetOrdersByCustomerAsync(string customerName)
     {
         if (string.IsNullOrWhiteSpace(customerName))
-            return new List<Order>();
+            return [];
 
-        return await _orderRepository.GetByCustomerAsync(customerName);
+        return await orderRepository.GetByCustomerAsync(customerName);
     }
 
     public async Task<Order?> AddItemToOrderAsync(int orderId, int itemId, int quantity)
@@ -81,18 +76,18 @@ public class OrderService : IOrderService
             return null;
 
 
-        var order = await _orderRepository.GetByIdAsync(orderId);
+        var order = await orderRepository.GetByIdAsync(orderId);
         if (order == null)
             throw new ArgumentException("Order not found.");
 
         if (order.Status == "Completed" || order.Status == "Cancelled")
             throw new InvalidOperationException("Cannot modify completed or cancelled orders.");
 
-        var item = await _itemRepository.GetByIdAsync(itemId);
+        var item = await itemRepository.GetByIdAsync(itemId);
         if (item.StockQuantity < quantity)
             throw new InvalidOperationException("Insufficient stock available.");
 
-        return await _orderRepository.AddItemToOrderAsync(orderId, itemId, quantity);
+        return await orderRepository.AddItemToOrderAsync(orderId, itemId, quantity);
     }
 
     public async Task<bool> RemoveItemFromOrderAsync(int orderId, int itemId)
@@ -101,14 +96,14 @@ public class OrderService : IOrderService
             return false;
 
 
-        var order = await _orderRepository.GetByIdAsync(orderId);
+        var order = await orderRepository.GetByIdAsync(orderId);
         if (order == null)
             return false;
 
         if (order.Status == "Completed" || order.Status == "Cancelled")
             throw new InvalidOperationException("Cannot modify completed or cancelled orders.");
 
-        return await _orderRepository.RemoveItemFromOrderAsync(orderId, itemId);
+        return await orderRepository.RemoveItemFromOrderAsync(orderId, itemId);
     }
 
     public async Task<Order?> UpdateOrderStatusAsync(int orderId, string status)
@@ -120,17 +115,17 @@ public class OrderService : IOrderService
         if (!validStatuses.Contains(status))
             throw new ArgumentException("Invalid order status.");
 
-        var order = await _orderRepository.GetByIdAsync(orderId);
+        var order = await orderRepository.GetByIdAsync(orderId);
         if (order == null)
             return null;
 
         order.Status = status;
-        return await _orderRepository.UpdateAsync(orderId, order);
+        return await orderRepository.UpdateAsync(orderId, order);
     }
 
     public async Task<decimal> CalculateOrderTotalAsync(int orderId)
     {
-        var order = await _orderRepository.GetByIdAsync(orderId);
+        var order = await orderRepository.GetByIdAsync(orderId);
         if (order == null)
             return 0;
 
