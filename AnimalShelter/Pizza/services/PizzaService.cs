@@ -2,25 +2,18 @@ using AnimalShelter.Pizza.models;
 
 namespace AnimalShelter.Pizza.services;
 
-public class PizzaService
+public class PizzaService (string pizzeriaName, int pizzaCapacity = 40)
 {
     public int SmallPizzaSizeInCm = 20;
     public int StandardPizzaSizeInCm = 32;
     public int LargePizzaSizeInCm = 45;
-    
+
     public List<models.Pizza> pizzas { get; }
     protected int pizzaCapacity;
     internal string pizzeriaName;
 
     public int Count => pizzas.Count;
     public bool IsFull => Count >= pizzaCapacity;
-
-    public PizzaService(string pizzeriaName, int pizzaCapacity = 40)
-    {
-        pizzas = new List<models.Pizza>();
-        this.pizzeriaName = pizzeriaName;
-        this.pizzaCapacity = pizzaCapacity;
-    }
 
     public void addMargherita(int diameterInCm, double price, int slices = 8)
     {
@@ -35,7 +28,7 @@ public class PizzaService
             Console.WriteLine($"{pizzeriaName} has too many pizzas!");
         }
     }
-    
+
     public void addFunghi(int diameterInCm, double price, int slices = 8)
     {
         if (!IsFull)

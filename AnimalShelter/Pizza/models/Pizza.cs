@@ -7,9 +7,10 @@ public abstract class Pizza
     protected double price { get; set; }
     // TODO replace with topping model
     protected List<string> toppings { get; set; }
-    
+
     protected int slices { get; set; }
 
+    // TODO builder patter
     public Pizza(string name, int diameterInCm, double price, List<string> toppings, int slices = 8)
     {
         this.name = name;
@@ -76,7 +77,7 @@ public abstract class Pizza
         Console.WriteLine($"Pizza toppings: { string.Join( ", ", toppings.ToArray() ) }");
         Console.WriteLine($"Slices left: {slices}");
     }
-    
-    
-    
+
+
+
 }
