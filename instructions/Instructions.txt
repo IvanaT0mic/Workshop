@@ -18,3 +18,5 @@ Data types: value types and reference types? Where are we saving then in memory?
 Comparation by value and comparation by reference? 
 
 Garbage collector; phases of cleaning memory?
+
+Ja zelim neki drugi tekst ovde da napisem bez obzira na kolege
