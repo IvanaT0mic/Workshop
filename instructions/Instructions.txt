@@ -20,3 +20,4 @@ Comparation by value and comparation by reference?
 Garbage collector; phases of cleaning memory?
 
 Hocu da dodam jos neki glupi text
+Ja zelim neki drugi tekst ovde da napisem bez obzira na kolege
